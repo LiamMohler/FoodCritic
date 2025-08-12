@@ -146,29 +146,28 @@ export default function RestaurantDetailPage() {
 
         {/* Restaurant Header */}
         <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-          {/* Title and Rating Section */}
-          <div className="p-6 pb-4">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              {restaurant.name}
-            </h1>
-            <div className="text-gray-900">
-              {renderRating(restaurant.rating, restaurant.user_ratings_total)}
+          <div className="relative">
+            {restaurant.photos && restaurant.photos[0] && (
+              <div className="h-64 md:h-80">
+                <img
+                  src={`http://localhost:8080/api/google-places/photo?photoReference=${restaurant.photos[0].photo_reference}&maxWidth=800`}
+                  alt={restaurant.name}
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=400&fit=crop';
+                  }}
+                />
+              </div>
+            )}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
+                {restaurant.name}
+              </h1>
+              <div className="text-white">
+                {renderRating(restaurant.rating, restaurant.user_ratings_total)}
+              </div>
             </div>
           </div>
-          
-          {/* Restaurant Image */}
-          {restaurant.photos && restaurant.photos[0] && (
-            <div className="h-64 md:h-80">
-              <img
-                src={`http://localhost:8080/api/google-places/photo?photoReference=${restaurant.photos[0].photo_reference}&maxWidth=800`}
-                alt={restaurant.name}
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=400&fit=crop';
-                }}
-              />
-            </div>
-          )}
 
           {/* Restaurant Info */}
           <div className="p-6">

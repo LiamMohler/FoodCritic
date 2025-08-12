@@ -117,8 +117,8 @@ export function ReviewForm({
       <div className="flex space-x-3 pt-4">
         <Button
           type="submit"
-          disabled={isSubmitting || rating === 0 || comment.trim().length < 10}
-          className="flex-1"
+          disabled={isSubmitting}
+          className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white"
         >
           {isSubmitting ? 'Submitting...' : (initialData?.reviewId ? 'Update Review' : 'Submit Review')}
         </Button>
