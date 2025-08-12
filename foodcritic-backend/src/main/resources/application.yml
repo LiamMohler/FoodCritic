@@ -1,0 +1,46 @@
+spring:
+  application:
+    name: foodcritic-backend
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/foodcritic
+    username: liammohler
+    password: 
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when-authorized
+
+app:
+  jwt:
+    secret: mySecretKey123456789012345678901234567890
+    expiration: 86400000
+  upload:
+    dir: uploads/
+  google:
+    places:
+      api-key: ${GOOGLE_PLACES_API_KEY:your_google_places_api_key_here}
+      base-url: https://maps.googleapis.com/maps/api/place

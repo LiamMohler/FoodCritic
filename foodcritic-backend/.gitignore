@@ -1,0 +1,40 @@
+# Environment variables
+.env
+.env.*
+!.env.example
+application-*.properties
+application-*.yml
+!application.yml
+
+# Maven
+target/
+*.log
+.mvn/
+mvnw
+mvnw.cmd
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.eclipse/
+.classpath
+.project
+.settings/
+
+# Spring Boot
+spring-boot-devtools.log
+
+# Application uploads and generated files
+uploads/
+temp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test databases
+*.db
+*.h2.db
